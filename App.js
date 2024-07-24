@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Header from './src/components/Header/Header';
 import Tasks from './src/components/Tasks/Tasks';
 import Form from './src/components/Form/Form';
+import SettingsScreen from './src/components/Settings/SettingsScreen';
 import { fetchTasks, addTask, removeTask, subscribeToTaskChanges } from './src/database/firebase'; // Adjust path as necessary
 
 const Tab = createBottomTabNavigator();
@@ -57,6 +58,9 @@ export default function App() {
                 } else if (route.name === 'Add') {
                   iconName = 'add-outline';
                 }
+                else if (route.name === 'Settings') {
+                  iconName = 'settings-outline';
+                }
 
                 return <Ionicons name={iconName} size={size} color={color} />;
               },
@@ -95,6 +99,10 @@ export default function App() {
               options={{
                 tabBarLabel: 'Add Task',
               }}
+            />
+            <Tab.Screen
+              name="Settings"
+              component={SettingsScreen}
             />
           </Tab.Navigator>
         </NavigationContainer>
